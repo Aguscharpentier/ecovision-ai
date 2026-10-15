@@ -666,6 +666,18 @@
     });
   }
 
+  /* ---------- Mapa: cambiar acercamiento sin salir de la página ---------- */
+  var mapFrame = document.getElementById("map-iframe");
+  var zoomBtns = document.querySelectorAll(".map-view-btn");
+  if (mapFrame && zoomBtns.length) {
+    zoomBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        zoomBtns.forEach(function (b) { b.classList.toggle("is-active", b === btn); });
+        mapFrame.src = mapFrame.src.replace(/([?&]z=)\d+/, "$1" + btn.dataset.zoom);
+      });
+    });
+  }
+
   var year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 })();

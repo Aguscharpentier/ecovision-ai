@@ -34,6 +34,7 @@
       <li><a class="nav-link" href="#integraciones">Integraciones</a></li>
       <li><a class="nav-link" href="#planes">Planes</a></li>
       <li><a class="nav-link" href="#nosotros">Nosotros</a></li>
+      <li><a class="nav-link" href="#ubicacion">Ubicación</a></li>
       <li class="nav-cta-mobile"><a class="btn btn-primary btn-block" href="#contacto">Solicitar piloto</a></li>
     </ul>
 
@@ -498,26 +499,38 @@
       </ul>
     </div>
   </div>
+</section>
 
-  <!-- Ubicación con mapa de Google Maps -->
+<!-- ============ UBICACIÓN · MAPA INTERACTIVO ============ -->
+<section class="section location" id="ubicacion" aria-labelledby="ubicacion-title">
   <div class="container">
-    <div class="map-card reveal" id="ubicacion">
+    <header class="section-head">
+      <p class="label">Ubicación</p>
+      <h2 id="ubicacion-title">Encuéntranos en <span class="text-gradient">Concepción</span></h2>
+      <p class="section-lead">Mueve el mapa, acércate o aléjate sin salir de la página.</p>
+    </header>
+
+    <div class="map-module">
       <div class="map-frame">
         <iframe
-          title="Mapa de la Universidad del Desarrollo, sede Ainavillo, Concepción"
-          src="https://www.google.com/maps?q=Universidad+del+Desarrollo,+Ainavillo+456,+Concepci%C3%B3n,+Chile&z=16&output=embed"
+          id="map-iframe"
+          title="Mapa interactivo de la Universidad del Desarrollo, sede Ainavillo, Ainavillo 456, Concepción"
+          src="https://www.google.com/maps?q=Universidad+del+Desarrollo,+Ainavillo+456,+Concepci%C3%B3n,+Chile&amp;z=16&amp;hl=es&amp;output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
       </div>
-      <div class="map-info">
+
+      <div class="map-info glass-card">
         <p class="label">Dónde estamos</p>
-        <h3>Universidad del Desarrollo · Sede Ainavillo</h3>
+        <h3>Universidad del Desarrollo<br>Sede Ainavillo</h3>
         <address>Ainavillo 456, Concepción<br>Región del Biobío, Chile</address>
-        <div class="map-actions">
-          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Universidad+del+Desarrollo,+Ainavillo+456,+Concepci%C3%B3n,+Chile" target="_blank" rel="noopener">Cómo llegar</a>
-          <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=Universidad+del+Desarrollo,+Ainavillo+456,+Concepci%C3%B3n,+Chile" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        <div class="map-views" role="group" aria-label="Acercamiento del mapa">
+          <button type="button" class="map-view-btn" data-zoom="18">Edificio</button>
+          <button type="button" class="map-view-btn is-active" data-zoom="16">Barrio</button>
+          <button type="button" class="map-view-btn" data-zoom="13">Ciudad</button>
         </div>
+        <a class="map-directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=Universidad+del+Desarrollo,+Ainavillo+456,+Concepci%C3%B3n,+Chile" target="_blank" rel="noopener">Cómo llegar (abre Google Maps) ↗</a>
       </div>
     </div>
   </div>
@@ -598,7 +611,7 @@
     <div class="footer-col">
       <h3>Ubicación</h3>
       <p>Universidad del Desarrollo, sede Ainavillo</p>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Universidad+del+Desarrollo,+Ainavillo+456,+Concepci%C3%B3n,+Chile" target="_blank" rel="noopener">Ainavillo 456, Concepción ↗</a>
+      <a href="#ubicacion">Ainavillo 456, Concepción · Ver mapa</a>
       <p>Región del Biobío, Chile</p>
     </div>
   </div>
