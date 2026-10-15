@@ -494,6 +494,45 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .social-links a:hover { background: rgba(var(--primary-rgb), 0.12); color: var(--primary-300); border-color: var(--primary-400); }
 
+/* Ubicación / mapa */
+a.about-place { transition: color 0.2s; }
+a.about-place:hover { color: var(--primary-300); }
+.map-card {
+  margin-top: clamp(48px, 7vw, 80px);
+  display: grid; grid-template-columns: 1.6fr 1fr; overflow: hidden;
+  border-radius: var(--radius-lg); border: 1px solid rgba(var(--primary-rgb), 0.25);
+  background: var(--bg-primary);
+  box-shadow: 0 30px 80px -30px rgba(var(--primary-rgb), 0.35);
+}
+.map-frame { position: relative; min-height: 360px; background: var(--bg-tertiary); }
+.map-frame iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+  /* Mapa en tonos oscuros para que combine con la web */
+  filter: invert(90%) hue-rotate(180deg) saturate(0.6) brightness(0.95);
+}
+.map-frame::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(var(--primary-rgb), 0.1), inset -40px 0 60px -40px rgba(0, 0, 0, 0.8);
+}
+.map-info {
+  display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: clamp(24px, 4vw, 40px);
+  background: linear-gradient(160deg, rgba(var(--primary-rgb), 0.1) 0%, transparent 60%);
+  min-width: 0;
+}
+.map-info h3 { font-size: 1.4rem; }
+.map-info address { font-style: normal; color: var(--text-tertiary); line-height: 1.6; }
+.map-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.map-actions .btn { padding: 12px 20px; font-size: 0.95rem; }
+@media (max-width: 1023px) {
+  .map-card { grid-template-columns: 1fr; }
+  .map-frame { min-height: 0; aspect-ratio: 16 / 10; }
+  .map-frame::after { box-shadow: inset 0 0 0 1px rgba(var(--primary-rgb), 0.1); }
+}
+@media (max-width: 767px) {
+  .map-frame { aspect-ratio: 4 / 3; }
+  .map-actions .btn { flex: 1 1 100%; }
+}
+
 /* =========================================================
    CTA FINAL
    ========================================================= */

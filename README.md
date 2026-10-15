@@ -42,7 +42,7 @@ Las imágenes son vectoriales (SVG): pesan pocos KB, se ven nítidas en cualquie
 8. **Planes**: Piloto, Planta y Red.
 9. **Roadmap** en 4 fases.
 10. **Testimonios** (textos de ejemplo, ver abajo).
-11. **Nosotros**: origen en Concepción y la Universidad del Desarrollo.
+11. **Nosotros**: origen en Concepción y la Universidad del Desarrollo, con mapa de Google Maps de la sede Ainavillo (Ainavillo 456) y botones "Cómo llegar" y "Abrir en Google Maps".
 12. **CTA final** con formulario de postulación al piloto.
 13. **Footer** con columnas de enlaces y ubicación.
 
