@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EcoVision AI</title>
+  <meta name="description" content="EcoVision AI automatiza la clasificación de PET, acero, papel y cartón con visión artificial para plantas de reciclaje. Concepción, Chile.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+
+  <!-- Fuentes: Plus Jakarta Sans (títulos), Inter (texto), JetBrains Mono (código) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <nav class="container nav-inner" aria-label="Principal">
+    <a href="#inicio" class="brand" aria-label="EcoVision AI, ir al inicio">
+      <img src="images/logo.svg" alt="" width="44" height="44" class="brand-logo">
+      <span class="brand-name">EcoVision<span class="brand-ai">AI</span></span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a class="nav-link" href="#solucion">Solución</a></li>
+      <li><a class="nav-link" href="#como-funciona">Cómo funciona</a></li>
+      <li><a class="nav-link" href="#demo">Demo</a></li>
+      <li><a class="nav-link" href="#integraciones">Integraciones</a></li>
+      <li><a class="nav-link" href="#planes">Planes</a></li>
+      <li><a class="nav-link" href="#nosotros">Nosotros</a></li>
+      <li class="nav-cta-mobile"><a class="btn btn-primary btn-block" href="#contacto">Solicitar piloto</a></li>
+    </ul>
+
+    <a class="btn btn-primary btn-sm nav-cta" href="#contacto">Solicitar piloto</a>
+
+    <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="contenido">
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="particles" id="particles" aria-hidden="true"></div>
+  <div class="hero-bg-glow" aria-hidden="true"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="label hero-label anim-up">♻️ Visión artificial para plantas de reciclaje</p>
+      <h1 class="hero-title anim-up">El ojo inteligente que <span class="text-gradient">acelera el reciclaje</span></h1>
+      <p class="hero-subtitle anim-up d2">
+        EcoVision AI automatiza la clasificación de PET, acero, papel y cartón con visión artificial.
+        Menos error humano en la cinta, fardos más limpios y una planta más rentable.
+      </p>
+      <div class="hero-ctas anim-pop">
+        <a href="#contacto" class="btn btn-primary btn-lg pulse">Solicitar un piloto</a>
+        <a href="#demo" class="btn btn-outline btn-lg">Ver demo en vivo</a>
+      </div>
+      <ul class="material-chips anim-up d3" aria-label="Materiales que clasifica">
+        <li><span class="dot dot-pet"></span>PET</li>
+        <li><span class="dot dot-acero"></span>Acero</li>
+        <li><span class="dot dot-papel"></span>Papel</li>
+        <li><span class="dot dot-carton"></span>Cartón</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual anim-rotate">
+      <div class="hero-visual-glow" aria-hidden="true"></div>
+      <img src="images/hero_visual.svg" alt="Ojo de visión artificial rodeado por una botella PET, una lata de acero, una hoja de papel y una caja de cartón detectadas" class="float glow-primary" width="1200" height="1200">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. SOCIAL PROOF / STACK ============ -->
+<section class="proof" aria-labelledby="proof-title">
+  <div class="container">
+    <h2 class="proof-title" id="proof-title">Construido sobre tecnología industrial probada</h2>
+    <ul class="stack-list">
+      <li class="stack-item">PyTorch</li>
+      <li class="stack-item">OpenCV</li>
+      <li class="stack-item">ONNX Runtime</li>
+      <li class="stack-item">NVIDIA Jetson</li>
+      <li class="stack-item">OPC UA</li>
+      <li class="stack-item">Modbus TCP</li>
+      <li class="stack-item">MQTT</li>
+      <li class="stack-item">Power BI</li>
+    </ul>
+
+    <div class="metrics">
+      <div class="metric">
+        <p class="metric-value"><span class="counter" data-target="4">4</span></p>
+        <p class="metric-label">materiales en la primera versión</p>
+      </div>
+      <div class="metric">
+        <p class="metric-value">24/7</p>
+        <p class="metric-label">operación continua sobre la cinta</p>
+      </div>
+      <div class="metric">
+        <p class="metric-value">&lt;<span class="counter" data-target="80">80</span><small>ms</small></p>
+        <p class="metric-label">por decisión de clasificación</p>
+      </div>
+      <div class="metric">
+        <p class="metric-value"><span class="counter" data-target="95">95</span><small>%</small></p>
+        <p class="metric-label">pureza objetivo por fardo</p>
+      </div>
+    </div>
+    <p class="metrics-note">Metas de diseño del programa piloto.</p>
+  </div>
+</section>
+
+<!-- ============ 3. SOLUCIÓN / FLIP CARDS ============ -->
+<section class="section" id="solucion" aria-labelledby="solucion-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="label">La solución</p>
+      <h2 id="solucion-title">Una estación de visión que <span class="text-gradient">ve cada objeto</span> de tu cinta</h2>
+      <p class="section-lead">Pasa el cursor sobre cada tarjeta, o tócala en el celular, para ver el detalle.</p>
+    </header>
+
+    <div class="services-grid">
+
+      <!-- Servicio 1 -->
+      <article class="service-card-flip reveal" tabindex="0" aria-label="Visión en tiempo real. Toca para ver detalle">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img src="images/service_1.svg" alt="Cámara sobre una cinta transportadora detectando objetos" class="service-image" loading="lazy" width="800" height="600">
+            <div class="service-overlay">
+              <span class="service-num">Visión</span>
+              <h3 class="service-title-front">Visión en tiempo real</h3>
+            </div>
+          </div>
+          <div class="service-card-back glass-card">
+            <h3 class="service-title-back">Visión en tiempo real</h3>
+            <p class="service-description">Cámaras industriales sobre la cinta capturan cada objeto. Un modelo de visión artificial lo identifica en milisegundos, incluso sucio, aplastado o parcialmente tapado.</p>
+            <div class="service-features"><span class="feature-tag">Cámaras RGB</span><span class="feature-tag">Deep learning</span><span class="feature-tag">Edge AI</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Servicio 2 -->
+      <article class="service-card-flip reveal" tabindex="0" aria-label="Clasificación de PET. Toca para ver detalle">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img src="images/service_2.svg" alt="Botella PET dentro de un recuadro de detección" class="service-image" loading="lazy" width="800" height="600">
+            <div class="service-overlay">
+              <span class="service-num">Material</span>
+              <h3 class="service-title-front">Clasificación de PET</h3>
+            </div>
+          </div>
+          <div class="service-card-back glass-card">
+            <h3 class="service-title-back">Clasificación de PET</h3>
+            <p class="service-description">Detecta botellas y envases de PET y los separa del resto del flujo. Fardos más limpios se venden mejor y se rechazan menos.</p>
+            <div class="service-features"><span class="feature-tag">Botellas</span><span class="feature-tag">Envases</span><span class="feature-tag">Pureza</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Servicio 3 -->
+      <article class="service-card-flip reveal" tabindex="0" aria-label="Clasificación de acero. Toca para ver detalle">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img src="images/service_3.svg" alt="Lata de acero rodeada de líneas de campo magnético" class="service-image" loading="lazy" width="800" height="600">
+            <div class="service-overlay">
+              <span class="service-num">Material</span>
+              <h3 class="service-title-front">Acero</h3>
+            </div>
+          </div>
+          <div class="service-card-back glass-card">
+            <h3 class="service-title-back">Acero</h3>
+            <p class="service-description">Identifica latas y envases de acero y complementa al separador magnético con verificación visual de lo que realmente sale de la línea.</p>
+            <div class="service-features"><span class="feature-tag">Latas</span><span class="feature-tag">Hojalata</span><span class="feature-tag">Verificación</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Servicio 4 -->
+      <article class="service-card-flip reveal" tabindex="0" aria-label="Papel y cartón. Toca para ver detalle">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img src="images/service_4.svg" alt="Hojas de papel y una caja de cartón corrugado detectadas" class="service-image" loading="lazy" width="800" height="600">
+            <div class="service-overlay">
+              <span class="service-num">Material</span>
+              <h3 class="service-title-front">Papel y cartón</h3>
+            </div>
+          </div>
+          <div class="service-card-back glass-card">
+            <h3 class="service-title-back">Papel y cartón</h3>
+            <p class="service-description">Distingue papel de cartón corrugado para que cada fracción llegue a su fardo sin contaminación cruzada con plásticos o metales.</p>
+            <div class="service-features"><span class="feature-tag">Cartón corrugado</span><span class="feature-tag">Papel</span><span class="feature-tag">Fibra</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Servicio 5 -->
+      <article class="service-card-flip reveal" tabindex="0" aria-label="Expulsión automática. Toca para ver detalle">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img src="images/service_5.svg" alt="Boquillas de aire desviando un objeto de la cinta hacia un contenedor" class="service-image" loading="lazy" width="800" height="600">
+            <div class="service-overlay">
+              <span class="service-num">Separación</span>
+              <h3 class="service-title-front">Expulsión automática</h3>
+            </div>
+          </div>
+          <div class="service-card-back glass-card">
+            <h3 class="service-title-back">Expulsión automática</h3>
+            <p class="service-description">La decisión del modelo activa válvulas de aire o actuadores que desvían cada objeto a su bahía, sin detener la cinta.</p>
+            <div class="service-features"><span class="feature-tag">Válvulas neumáticas</span><span class="feature-tag">PLC</span><span class="feature-tag">Sin paradas</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Servicio 6 -->
+      <article class="service-card-flip reveal" tabindex="0" aria-label="Analítica de planta. Toca para ver detalle">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img src="images/service_6.svg" alt="Panel con gráficos de barras y de línea" class="service-image" loading="lazy" width="800" height="600">
+            <div class="service-overlay">
+              <span class="service-num">Datos</span>
+              <h3 class="service-title-front">Analítica de planta</h3>
+            </div>
+          </div>
+          <div class="service-card-back glass-card">
+            <h3 class="service-title-back">Analítica de planta</h3>
+            <p class="service-description">Un panel muestra toneladas por material, pureza, rechazos y rendimiento por turno, con datos trazables para reportar metas de la Ley REP.</p>
+            <div class="service-features"><span class="feature-tag">Dashboard</span><span class="feature-tag">Reportes</span><span class="feature-tag">Ley REP</span></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. CÓMO FUNCIONA ============ -->
+<section class="section section-alt" id="como-funciona" aria-labelledby="proceso-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="label">Cómo funciona</p>
+      <h2 id="proceso-title">De la cinta al fardo en cuatro pasos</h2>
+    </header>
+    <ol class="steps">
+      <li class="step glass-card reveal">
+        <span class="step-num">01</span>
+        <h3>Captura</h3>
+        <p>Una estación de cámaras con iluminación controlada se monta sobre tu cinta actual. No hay que rehacer la línea.</p>
+      </li>
+      <li class="step glass-card reveal">
+        <span class="step-num">02</span>
+        <h3>Identificación</h3>
+        <p>Un computador industrial en la planta ejecuta el modelo y decide el material de cada objeto, sin depender de internet.</p>
+      </li>
+      <li class="step glass-card reveal">
+        <span class="step-num">03</span>
+        <h3>Separación</h3>
+        <p>La señal llega al PLC, que activa la válvula de aire en el momento exacto para enviar el objeto a su bahía.</p>
+      </li>
+      <li class="step glass-card reveal">
+        <span class="step-num">04</span>
+        <h3>Medición</h3>
+        <p>Cada decisión queda registrada. Ves pureza, volumen y rechazos por turno, y el modelo mejora con tus propios datos.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 5. DEMO EN VIVO ============ -->
+<section class="section" id="demo" aria-labelledby="demo-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="label">Demo en vivo</p>
+      <h2 id="demo-title">Así ve EcoVision AI <span class="text-gradient">tu cinta</span></h2>
+      <p class="section-lead">Cambia entre clasificación manual y EcoVision AI y compara la pureza de los fardos.</p>
+    </header>
+
+    <div class="demo-grid">
+      <div class="demo-stage glass-card">
+        <div class="demo-toolbar">
+          <div class="mode-switch" role="radiogroup" aria-label="Modo de clasificación">
+            <button type="button" id="mode-ai" class="mode-btn is-active" role="radio" aria-checked="true">EcoVision AI</button>
+            <button type="button" id="mode-manual" class="mode-btn" role="radio" aria-checked="false">Manual</button>
+          </div>
+          <button type="button" class="icon-btn" id="demo-play" aria-label="Pausar simulación">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path class="ico-pause" d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/><path class="ico-play" d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="belt-canvas" aria-label="Simulación de una cinta transportadora con objetos detectados y separados por material" role="img"></canvas>
+          <span class="live-badge"><span class="live-dot"></span>EN VIVO</span>
+        </div>
+        <p class="demo-note">Simulación ilustrativa. Los valores no corresponden a una planta real.</p>
+      </div>
+
+      <aside class="demo-panel glass-card" aria-label="Indicadores de la simulación">
+        <p class="label">Turno actual</p>
+        <div class="kpi-big">
+          <p class="kpi-big-value"><span id="kpi-purity">0</span><small>%</small></p>
+          <p class="kpi-big-label">Pureza de los fardos</p>
+          <div class="bar"><span id="kpi-purity-bar"></span></div>
+        </div>
+        <dl class="kpi-list">
+          <div><dt><span class="dot dot-pet"></span>PET</dt><dd id="kpi-pet">0</dd></div>
+          <div><dt><span class="dot dot-acero"></span>Acero</dt><dd id="kpi-acero">0</dd></div>
+          <div><dt><span class="dot dot-papel"></span>Papel</dt><dd id="kpi-papel">0</dd></div>
+          <div><dt><span class="dot dot-carton"></span>Cartón</dt><dd id="kpi-carton">0</dd></div>
+          <div><dt><span class="dot dot-otros"></span>Rechazo</dt><dd id="kpi-rechazo">0</dd></div>
+        </dl>
+        <div class="kpi-row">
+          <div><p class="kpi-small-value" id="kpi-rate">0</p><p class="kpi-small-label">objetos / min</p></div>
+          <div><p class="kpi-small-value" id="kpi-errors">0</p><p class="kpi-small-label">mal clasificados</p></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. INTEGRACIONES + API ============ -->
+<section class="section section-alt" id="integraciones" aria-labelledby="int-title">
+  <div class="container int-grid">
+    <div class="int-copy">
+      <p class="label">Integraciones y API</p>
+      <h2 id="int-title">Se conecta con lo que tu planta ya usa</h2>
+      <p class="section-lead">EcoVision AI habla los protocolos industriales de tu línea y entrega cada evento por API para que lo uses en tus propios sistemas.</p>
+      <ul class="int-list">
+        <li class="int-item glass-card"><strong>PLC</strong><span>OPC UA y Modbus TCP</span></li>
+        <li class="int-item glass-card"><strong>SCADA</strong><span>Tags y alarmas en tiempo real</span></li>
+        <li class="int-item glass-card"><strong>MQTT</strong><span>Eventos por objeto y por turno</span></li>
+        <li class="int-item glass-card"><strong>API REST</strong><span>Historial, reportes y webhooks</span></li>
+        <li class="int-item glass-card"><strong>BI</strong><span>Power BI, Excel y CSV</span></li>
+        <li class="int-item glass-card"><strong>ERP</strong><span>Pesajes y despachos de fardos</span></li>
+      </ul>
+    </div>
+
+    <div class="code-card">
+      <div class="code-head">
+        <span class="code-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="code-file">evento de detección</span>
+        <button type="button" class="copy-btn" id="copy-code">Copiar</button>
+      </div>
+      <div class="code-scroll">
+<pre><code id="code-sample"><span class="c-m">POST</span> <span class="c-s">/v1/lineas/L1/eventos</span>
+{
+  <span class="c-k">"timestamp"</span>: <span class="c-s">"2026-10-13T14:32:08.412-03:00"</span>,
+  <span class="c-k">"objeto_id"</span>: <span class="c-s">"L1-000184237"</span>,
+  <span class="c-k">"material"</span>: <span class="c-s">"PET"</span>,
+  <span class="c-k">"confianza"</span>: <span class="c-n">0.97</span>,
+  <span class="c-k">"bbox"</span>: [<span class="c-n">412</span>, <span class="c-n">188</span>, <span class="c-n">96</span>, <span class="c-n">164</span>],
+  <span class="c-k">"accion"</span>: {
+    <span class="c-k">"tipo"</span>: <span class="c-s">"expulsion"</span>,
+    <span class="c-k">"valvula"</span>: <span class="c-n">3</span>,
+    <span class="c-k">"retardo_ms"</span>: <span class="c-n">142</span>
+  },
+  <span class="c-k">"latencia_ms"</span>: <span class="c-n">38</span>
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. PLANES ============ -->
+<section class="section" id="planes" aria-labelledby="planes-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="label">Planes</p>
+      <h2 id="planes-title">Parte con un piloto. Escala cuando veas los números.</h2>
+    </header>
+    <div class="pricing-grid">
+      <article class="price-card glass-card reveal">
+        <h3>Piloto</h3>
+        <p class="price">90 días</p>
+        <p class="price-desc">Para validar el resultado en tu propia línea.</p>
+        <ul class="check-list">
+          <li>1 línea y 1 estación de visión</li>
+          <li>Instalación y calibración en planta</li>
+          <li>Modelo ajustado a tu material</li>
+          <li>Informe final de pureza y rendimiento</li>
+        </ul>
+        <a href="#contacto" class="btn btn-outline btn-block">Postular al piloto</a>
+      </article>
+
+      <article class="price-card glass-card featured reveal">
+        <span class="badge">Recomendado</span>
+        <h3>Planta</h3>
+        <p class="price">Por línea <small>/ mes</small></p>
+        <p class="price-desc">Para operación continua, con soporte en Chile.</p>
+        <ul class="check-list">
+          <li>Hasta 3 líneas de clasificación</li>
+          <li>Integración con PLC y válvulas</li>
+          <li>Panel de analítica y reportes por turno</li>
+          <li>Reentrenamiento periódico del modelo</li>
+          <li>Soporte técnico remoto y en terreno</li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary btn-block">Cotizar</a>
+      </article>
+
+      <article class="price-card glass-card reveal">
+        <h3>Red</h3>
+        <p class="price">A medida</p>
+        <p class="price-desc">Para gestores con varias plantas.</p>
+        <ul class="check-list">
+          <li>Plantas y líneas ilimitadas</li>
+          <li>API, webhooks e integración con ERP</li>
+          <li>Reportes consolidados para la Ley REP</li>
+          <li>Acuerdo de nivel de servicio</li>
+        </ul>
+        <a href="#contacto" class="btn btn-outline btn-block">Hablar con el equipo</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. ROADMAP ============ -->
+<section class="section section-alt" id="roadmap" aria-labelledby="roadmap-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="label">Roadmap</p>
+      <h2 id="roadmap-title">Hacia dónde vamos</h2>
+    </header>
+    <ol class="roadmap">
+      <li class="road-item reveal">
+        <span class="road-status is-now">En curso</span>
+        <h3>Fase 1 · Piloto</h3>
+        <p>Clasificación de PET, acero, papel y cartón en una línea real.</p>
+      </li>
+      <li class="road-item reveal">
+        <span class="road-status">Próximo</span>
+        <h3>Fase 2 · Más materiales</h3>
+        <p>Aluminio, PEAD y vidrio, con el mismo hardware instalado.</p>
+      </li>
+      <li class="road-item reveal">
+        <span class="road-status">Planificado</span>
+        <h3>Fase 3 · Picking robótico</h3>
+        <p>Brazo robótico para objetos que el aire no puede desviar.</p>
+      </li>
+      <li class="road-item reveal">
+        <span class="road-status">Planificado</span>
+        <h3>Fase 4 · Trazabilidad</h3>
+        <p>Reportes automáticos para gestores y sistemas de gestión REP.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 9. TESTIMONIOS ============ -->
+<section class="section" id="testimonios" aria-labelledby="testi-title">
+  <div class="container">
+    <header class="section-head">
+      <p class="label">Testimonios</p>
+      <h2 id="testi-title">Lo que buscamos lograr en cada planta</h2>
+      <p class="placeholder-note">Textos de ejemplo. Reemplázalos por testimonios reales de tus pilotos.</p>
+    </header>
+    <div class="testi-grid">
+      <figure class="testi-card glass-card reveal">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>“Bajamos el rechazo de fardos de PET. EcoVision AI cambió por completo cómo trabajamos la línea de envases.”</blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">JO</span><span><strong>Jefatura de operaciones</strong><br>Planta de valorización · Ejemplo</span></figcaption>
+      </figure>
+      <figure class="testi-card glass-card reveal">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>“Por primera vez tenemos datos por turno. EcoVision AI transformó cómo reportamos nuestras metas de reciclaje.”</blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">GA</span><span><strong>Gerencia de sustentabilidad</strong><br>Gestor de residuos · Ejemplo</span></figcaption>
+      </figure>
+      <figure class="testi-card glass-card reveal">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>“La instalación no paró la cinta. EcoVision AI se integró con nuestro PLC sin rehacer la línea.”</blockquote>
+        <figcaption><span class="avatar" aria-hidden="true">JM</span><span><strong>Jefatura de mantención</strong><br>Planta de reciclaje · Ejemplo</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. NOSOTROS ============ -->
+<section class="section section-alt" id="nosotros" aria-labelledby="about-title">
+  <div class="container about-grid">
+    <div class="about-visual reveal">
+      <div class="about-circle">
+        <img src="images/logo.svg" alt="Logo de EcoVision AI" width="512" height="512">
+      </div>
+      <p class="about-place"><span class="dot dot-live"></span>Concepción, Región del Biobío, Chile</p>
+    </div>
+    <div class="about-copy">
+      <p class="label">Nosotros</p>
+      <h2 id="about-title">Sobre EcoVision AI</h2>
+      <p>EcoVision AI nace en Concepción, en la Universidad del Desarrollo, a partir de una pregunta simple: ¿por qué la clasificación de residuos sigue dependiendo casi por completo del ojo humano, frente a una cinta que no se detiene?</p>
+      <p>Combinamos visión artificial, automatización industrial y conocimiento de la operación diaria de las plantas. Partimos con PET, acero, papel y cartón, los materiales que más pesan en el día a día de una línea de clasificación.</p>
+      <p>Queremos que las plantas de Chile y Latinoamérica reciclen más, con menos error y mejores márgenes.</p>
+      <ul class="social-links">
+        <li><a href="#" aria-label="LinkedIn de EcoVision AI">LinkedIn</a></li>
+        <li><a href="#" aria-label="Instagram de EcoVision AI">Instagram</a></li>
+        <li><a href="#" aria-label="YouTube de EcoVision AI">YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. CTA FINAL + FORMULARIO ============ -->
+<section class="section cta-final" id="contacto" aria-labelledby="cta-title">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="container cta-grid">
+    <div class="cta-copy">
+      <p class="label">Programa piloto</p>
+      <h2 id="cta-title" class="cta-title">¿Listo para ver tu cinta con <span class="text-gradient">otros ojos</span>?</h2>
+      <p class="section-lead">Evaluamos tu línea, instalamos una estación de visión y medimos el resultado con tus propios datos durante 90 días.</p>
+      <p class="urgency"><span class="dot dot-live"></span>Postulaciones abiertas para plantas de la Región del Biobío.</p>
+    </div>
+
+    <form class="cta-form glass-card" id="pilot-form" novalidate>
+      <div class="field">
+        <label for="f-name">Nombre</label>
+        <input id="f-name" name="nombre" type="text" autocomplete="name" required placeholder="Tu nombre">
+      </div>
+      <div class="field">
+        <label for="f-company">Empresa o planta</label>
+        <input id="f-company" name="empresa" type="text" autocomplete="organization" required placeholder="Nombre de la planta">
+      </div>
+      <div class="field">
+        <label for="f-email">Correo</label>
+        <input id="f-email" name="correo" type="email" autocomplete="email" required placeholder="nombre@empresa.cl">
+      </div>
+      <div class="field">
+        <label for="f-volume">Volumen procesado</label>
+        <select id="f-volume" name="volumen">
+          <option value="">Selecciona un rango</option>
+          <option>Menos de 10 t/día</option>
+          <option>10 a 50 t/día</option>
+          <option>50 a 150 t/día</option>
+          <option>Más de 150 t/día</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block pulse">Postular al piloto</button>
+      <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 12. FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#inicio" class="brand">
+        <img src="images/logo.svg" alt="" width="40" height="40" class="brand-logo">
+        <span class="brand-name">EcoVision<span class="brand-ai">AI</span></span>
+      </a>
+      <p>El ojo inteligente que acelera el reciclaje.</p>
+    </div>
+    <nav class="footer-col" aria-label="Solución">
+      <h3>Solución</h3>
+      <a href="#solucion">Visión en tiempo real</a>
+      <a href="#solucion">PET y acero</a>
+      <a href="#solucion">Papel y cartón</a>
+      <a href="#solucion">Analítica de planta</a>
+    </nav>
+    <nav class="footer-col" aria-label="Recursos">
+      <h3>Recursos</h3>
+      <a href="#demo">Demo en vivo</a>
+      <a href="#integraciones">API e integraciones</a>
+      <a href="#roadmap">Roadmap</a>
+    </nav>
+    <nav class="footer-col" aria-label="Empresa">
+      <h3>Empresa</h3>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#planes">Planes</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#">Privacidad</a>
+    </nav>
+    <div class="footer-col">
+      <h3>Ubicación</h3>
+      <p>Concepción, Región del Biobío, Chile</p>
+      <p>Universidad del Desarrollo</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="year">2026</span> EcoVision AI. Todos los derechos reservados.</p>
+    <p>Hecho en Concepción, Chile.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

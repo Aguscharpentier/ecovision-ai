@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#050806"/><stop offset="1" stop-color="#0A130D"/></linearGradient>
+<radialGradient id="glow" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#22C55E" stop-opacity=".28"/><stop offset="1" stop-color="#22C55E" stop-opacity="0"/></radialGradient>
+<linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86EFAC"/><stop offset=".5" stop-color="#22C55E"/><stop offset="1" stop-color="#15803D"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#22C55E" stroke-opacity=".07" stroke-width="1"/></pattern>
+<filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+<filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="pet" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22C55E" stop-opacity=".28"/><stop offset=".5" stop-color="#86EFAC" stop-opacity=".08"/><stop offset="1" stop-color="#22C55E" stop-opacity=".22"/></linearGradient>
+</defs>
+<rect width="800" height="600" fill="url(#bg)"/>
+<rect width="800" height="600" fill="url(#grid)"/>
+<rect width="800" height="600" fill="url(#glow)"/>
+<polygon points="179.4,177.0 150.0,194.0 120.6,177.0 120.6,143.0 150.0,126.0 179.4,143.0" fill="none" stroke="#22C55E" stroke-opacity="0.35" stroke-width="1.5"/><polygon points="238.4,211.0 209.0,228.0 179.6,211.0 179.6,177.0 209.0,160.0 238.4,177.0" fill="none" stroke="#22C55E" stroke-opacity="0.2" stroke-width="1.5"/><polygon points="179.4,245.0 150.0,262.0 120.6,245.0 120.6,211.0 150.0,194.0 179.4,211.0" fill="none" stroke="#22C55E" stroke-opacity="0.15" stroke-width="1.5"/><polygon points="666.0,435.0 640.0,450.0 614.0,435.0 614.0,405.0 640.0,390.0 666.0,405.0" fill="none" stroke="#22C55E" stroke-opacity="0.3" stroke-width="1.5"/><polygon points="718.0,465.0 692.0,480.0 666.0,465.0 666.0,435.0 692.0,420.0 718.0,435.0" fill="none" stroke="#22C55E" stroke-opacity="0.18" stroke-width="1.5"/><polygon points="666.0,495.0 640.0,510.0 614.0,495.0 614.0,465.0 640.0,450.0 666.0,465.0" fill="none" stroke="#22C55E" stroke-opacity="0.12" stroke-width="1.5"/><polygon points="679.1,151.0 660.0,162.0 640.9,151.0 640.9,129.0 660.0,118.0 679.1,129.0" fill="none" stroke="#22C55E" stroke-opacity="0.25" stroke-width="1.5"/><polygon points="139.1,481.0 120.0,492.0 100.9,481.0 100.9,459.0 120.0,448.0 139.1,459.0" fill="none" stroke="#22C55E" stroke-opacity="0.2" stroke-width="1.5"/><g filter="url(#soft)">
+<path d="M370 120 h60 v30 c0 18 40 38 40 80 v250 c0 22 -18 40 -40 40 h-60 c-22 0 -40 -18 -40 -40 v-250 c0 -42 40 -62 40 -80 z" fill="url(#pet)" stroke="url(#gs)" stroke-width="3"/>
+<rect x="364" y="92" width="72" height="32" rx="6" fill="#22C55E" fill-opacity=".85"/>
+<path d="M330 300 h140 M330 330 h140 M330 360 h140" stroke="#86EFAC" stroke-opacity=".35" stroke-width="2"/>
+<path d="M352 200 c-8 40 -8 200 0 260" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="6" stroke-linecap="round" fill="none"/>
+</g><g fill="none" stroke="#4ADE80" stroke-width="3.5" stroke-linecap="round" filter="url(#soft)">
+<path d="M296 94V76H314"/><path d="M486 76H504V94"/>
+<path d="M504 536V554H486"/><path d="M314 554H296V536"/></g>
+</svg>
