@@ -699,8 +699,8 @@ a.about-place:hover { color: var(--green-soft); }
   --det-len: 12px; --det-w: 2px;
   position: relative; display: inline-flex; align-items: center; gap: 10px;
   padding: 9px 18px 9px 10px; border-radius: 4px; cursor: pointer;
-  background: var(--panel-2); color: var(--text); border: 1px solid var(--line-strong);
-  font: 650 0.98rem/1 var(--font); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  background: var(--green); color: var(--on-green); border: 1px solid var(--green);
+  font: 700 1rem/1 var(--font); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
   transition: border-color 0.2s, background-color 0.2s;
 }
 .cb-launcher::after {
@@ -717,9 +717,9 @@ a.about-place:hover { color: var(--green-soft); }
     linear-gradient(var(--c), var(--c)) bottom right / var(--w) var(--l) no-repeat;
   opacity: 0.85; transition: inset 0.2s var(--ease), opacity 0.2s;
 }
-.cb-launcher:hover { border-color: rgba(var(--green-rgb), 0.5); }
+.cb-launcher:hover { background: var(--green-bright); border-color: var(--green-bright); }
 .cb-launcher:hover::after { inset: -8px; opacity: 1; }
-.cb-launcher img { width: 30px; height: 30px; }
+.cb-launcher img { width: 30px; height: 30px; padding: 3px; border-radius: 4px; background: var(--black); }
 .cb.is-open .cb-launcher-text::before { content: "Cerrar"; }
 .cb.is-open .cb-launcher-text { font-size: 0; }
 .cb.is-open .cb-launcher-text::before { font-size: 0.98rem; }
