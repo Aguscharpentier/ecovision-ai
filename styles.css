@@ -547,6 +547,26 @@ a.about-place:hover { color: var(--primary-300); }
 .cta-copy { display: grid; gap: 20px; min-width: 0; }
 .cta-title { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 800; line-height: 1.1; }
 .urgency { display: inline-flex; align-items: center; gap: 10px; color: var(--primary-300); font-weight: 500; }
+.contact-list { display: grid; gap: 12px; margin-top: 8px; max-width: 460px; }
+.contact-item {
+  display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: var(--radius-md);
+  background: rgba(9, 9, 11, 0.7); border: 1px solid rgba(var(--primary-rgb), 0.2);
+  transition: border-color 0.25s;
+}
+.contact-item:hover { border-color: rgba(var(--primary-rgb), 0.45); }
+.contact-icon {
+  width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 12px;
+  color: var(--primary-300); background: rgba(var(--primary-rgb), 0.12);
+}
+.contact-text { display: grid; min-width: 0; flex: 1; }
+.contact-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-quaternary); }
+.contact-value { color: var(--text-primary); font-weight: 600; overflow-wrap: anywhere; }
+.contact-value:hover { color: var(--primary-300); }
+.contact-copy { flex: none; }
+.form-msg a { color: var(--primary-300); text-decoration: underline; }
+.footer-contact { display: grid; gap: 6px; }
+.footer-contact a { font-size: 0.93rem; color: var(--text-tertiary); transition: color 0.2s; overflow-wrap: anywhere; }
+.footer-contact a:hover { color: var(--primary-300); }
 .cta-form { display: grid; gap: 16px; background: rgba(9, 9, 11, 0.75); }
 .field { display: grid; gap: 6px; }
 .field label { font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); }
@@ -733,4 +753,12 @@ a.about-place:hover { color: var(--primary-300); }
   .anim-up, .anim-pop, .anim-rotate { opacity: 1; }
   .js-reveal .reveal { opacity: 1; transform: none; }
   .particles { display: none; }
+}
+
+/* Contacto en móvil: el correo cabe en una línea */
+@media (max-width: 480px) {
+  .contact-item { gap: 12px; padding: 12px 14px; }
+  .contact-icon { width: 36px; height: 36px; }
+  .contact-value { font-size: 0.9rem; }
+  .contact-copy { padding: 6px 10px; }
 }

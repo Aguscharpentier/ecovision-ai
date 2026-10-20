@@ -654,8 +654,23 @@
         return;
       }
       msg.classList.remove("error");
-      var name = form.querySelector("#f-name").value.trim().split(" ")[0];
-      msg.textContent = "Gracias, " + name + ". Este formulario aún no está conectado a un correo: configúralo según el README para recibir las postulaciones.";
+      // Sin servidor: se arma un correo con los datos para enviarlo a EcoVision AI
+      var fullName = form.querySelector("#f-name").value.trim();
+      var name = fullName.split(" ")[0];
+      var body = "Nombre: " + fullName +
+        "\nEmpresa o planta: " + form.querySelector("#f-company").value.trim() +
+        "\nCorreo: " + form.querySelector("#f-email").value.trim() +
+        "\nVolumen procesado: " + (form.querySelector("#f-volume").value || "No indicado");
+      var mailto = "mailto:ecovisionai1@gmail.com?subject=" +
+        encodeURIComponent("Postulación al piloto · " + form.querySelector("#f-company").value.trim()) +
+        "&body=" + encodeURIComponent(body);
+      msg.innerHTML = "";
+      msg.appendChild(document.createTextNode("Gracias, " + name + ". Para completar tu postulación, "));
+      var link = document.createElement("a");
+      link.href = mailto;
+      link.textContent = "envíanos estos datos por correo";
+      msg.appendChild(link);
+      msg.appendChild(document.createTextNode(" o escríbenos a ecovisionai1@gmail.com."));
       form.reset();
     });
     form.addEventListener("input", function (e) {
@@ -677,6 +692,20 @@
       });
     });
   }
+
+  /* ---------- Copiar correo de contacto ---------- */
+  document.querySelectorAll(".contact-copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.dataset.copy;
+      function done(label) {
+        btn.textContent = label;
+        setTimeout(function () { btn.textContent = "Copiar"; }, 2000);
+      }
+      try {
+        navigator.clipboard.writeText(text).then(function () { done("Copiado"); }, function () { done("Selecciona y copia"); });
+      } catch (e) { done("Selecciona y copia"); }
+    });
+  });
 
   var year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();

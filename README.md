@@ -83,8 +83,8 @@ También respeta `prefers-reduced-motion`: si el usuario pidió menos movimiento
 
 - **Testimonios:** los tres textos son de ejemplo y lo dicen en la página. Reemplázalos por testimonios reales de los pilotos (en `index.html`, sección `#testimonios`) y borra el aviso amarillo.
 - **Métricas:** las cifras (4 materiales, <80 ms, 95 % de pureza) están marcadas como metas de diseño del piloto. Actualízalas cuando tengas resultados medidos.
-- **Formulario:** no envía datos a ningún lado. Para recibir postulaciones, conéctalo a un servicio como Formspree, Getform o Netlify Forms y reemplaza el bloque `submit` de `script.js` por el envío real.
-- **Redes sociales:** los enlaces de LinkedIn, Instagram y YouTube apuntan a `#`. Cambia el `href` por las URLs reales.
+- **Formulario:** no tiene servidor. Al postular, arma un correo con los datos dirigido a ecovisionai1@gmail.com para que el visitante lo envíe desde su propio correo. Para recibir las postulaciones automáticamente, conéctalo a un servicio como Formspree, Getform o Netlify Forms y reemplaza el bloque `submit` de `script.js` por el envío real.
+- **Redes sociales:** Instagram (@ecovisionai1) y el correo ecovisionai1@gmail.com ya están enlazados en Contacto, Nosotros y el footer. LinkedIn y YouTube siguen apuntando a `#`: cambia el `href` por las URLs reales o borra esos enlaces.
 - **Privacidad:** el enlace del footer también apunta a `#`.
 
 ## Personalización rápida
