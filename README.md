@@ -15,6 +15,7 @@ ecovision-ai/
 ├── index.html        Estructura y contenido de todas las secciones
 ├── styles.css        Sistema de diseño, componentes y responsive
 ├── script.js         Animaciones, flip cards, demo en vivo y formulario
+├── chatbot.js        Asistente de preguntas frecuentes (sin servidor)
 ├── README.md
 └── images/
     ├── logo.svg          Logo principal (navbar, footer, favicon)
@@ -46,6 +47,16 @@ Las imágenes son vectoriales (SVG): pesan pocos KB, se ven nítidas en cualquie
 12. **Ubicación**: mapa interactivo de Google Maps incrustado en la página (UDD sede Ainavillo, Ainavillo 456, Concepción), con botones Edificio / Barrio / Ciudad para cambiar el acercamiento sin salir de la web.
 13. **CTA final** con formulario de postulación al piloto.
 14. **Footer** con columnas de enlaces y ubicación.
+
+## Asistente de preguntas frecuentes
+
+El botón **¿Dudas?** (abajo a la derecha) abre un asistente que responde preguntas frecuentes al instante. Funciona 100 % en el navegador: no necesita servidor ni claves de API, no tiene costo y no guarda datos de los visitantes.
+
+- **Cómo entiende:** busca palabras clave en la pregunta, sin importar tildes, mayúsculas ni plurales. Las palabras genéricas pesan menos que las específicas, así "¿funciona sin internet?" responde sobre internet y no sobre el funcionamiento general.
+- **Temas que cubre:** qué es EcoVision, materiales (y los que vienen), cómo funciona, precisión, velocidad, instalación, internet, integraciones, reportes y Ley REP, planes y precios, piloto, ubicación, contacto, equipo, roadmap, demo y beneficios.
+- **Si no sabe:** lo dice y ofrece el correo y el Instagram.
+- **Editar o agregar respuestas:** abre `chatbot.js` y modifica el arreglo `INTENTS`. Cada tema tiene `keys` (palabras clave; agrega `~1` a las genéricas), `answer` (la respuesta), `actions` (botones a secciones o enlaces) y `next` (preguntas sugeridas).
+- **Pasar a IA más adelante:** se puede reemplazar la función `findAnswer` por una llamada a un modelo de IA a través de un servidor intermedio (por ejemplo Cloudflare Workers) que guarde la clave de API. Nunca pongas una clave de API directamente en estos archivos, porque quedaría pública.
 
 ## Paleta de colores
 
