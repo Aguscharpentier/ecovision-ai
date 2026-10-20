@@ -66,7 +66,9 @@ La escala completa (`--primary-50` a `--primary-900`) y `--primary-rgb` están a
 
 El texto de los botones verdes es casi negro (`--on-primary`) en vez de blanco, porque el blanco sobre verde neón no tiene contraste suficiente para leerse bien.
 
-**Tipografía:** Plus Jakarta Sans (títulos), Inter (texto) y JetBrains Mono (código y datos), todas de Google Fonts.
+**Tipografía:** Archivo (Google Fonts) para toda la web, usando su ancho variable: más ancho e industrial en los títulos, normal en el texto. JetBrains Mono solo en el bloque de código.
+
+**Sello visual:** las esquinas de detección de la cámara enmarcan solo lo importante (visor del inicio, plan recomendado, mapa y reverso de cada servicio). Cada material tiene un color fijo: PET azul, acero gris metal, papel blanco y cartón kraft. La única animación de entrada es el visor del inicio, que enfoca y muestra las detecciones.
 
 ## Responsive
 

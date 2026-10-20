@@ -42,7 +42,7 @@
   var navbar = document.getElementById("navbar");
   var toggle = document.getElementById("menu-toggle");
   var links = document.getElementById("nav-links");
-  var heroGlow = document.querySelector(".hero-bg-glow");
+  var heroGlow = null; // sin parallax: la portada queda quieta al hacer scroll
   var ticking = false;
 
   function onScroll() {
@@ -468,7 +468,7 @@
       }
 
       // Bahías / contenedores
-      ctx.font = "600 " + L.font + "px Inter, system-ui, sans-serif";
+      ctx.font = "600 " + L.font + "px Archivo, system-ui, sans-serif";
       ctx.textAlign = "center"; ctx.textBaseline = "middle";
       BIN_ORDER.forEach(function (m) {
         var cx = W * BIN_X[m], bw = L.binW;
@@ -483,16 +483,16 @@
         ctx.fill(); ctx.stroke();
         ctx.fillStyle = MATS[m].color;
         var fs = L.font;
-        ctx.font = "600 " + fs + "px Inter, system-ui, sans-serif";
+        ctx.font = "600 " + fs + "px Archivo, system-ui, sans-serif";
         while (fs > 7 && ctx.measureText(MATS[m].label).width > bw - 10) {
           fs -= 0.5;
-          ctx.font = "600 " + fs + "px Inter, system-ui, sans-serif";
+          ctx.font = "600 " + fs + "px Archivo, system-ui, sans-serif";
         }
         ctx.fillText(MATS[m].label, cx, L.binTop + (L.binBot - L.binTop) * 0.36);
         ctx.fillStyle = "#A1A1AA";
         ctx.font = "500 " + L.font + "px 'JetBrains Mono', ui-monospace, monospace";
         ctx.fillText(String(stats.bins[m]), cx, L.binTop + (L.binBot - L.binTop) * 0.7);
-        ctx.font = "600 " + L.font + "px Inter, system-ui, sans-serif";
+        ctx.font = "600 " + L.font + "px Archivo, system-ui, sans-serif";
       });
       // Rechazo
       ctx.textAlign = "right"; ctx.fillStyle = "#71717A";
@@ -507,7 +507,7 @@
         });
       } else {
         ctx.fillStyle = "#F59E0B";
-        ctx.font = "500 " + L.font + "px Inter, system-ui, sans-serif";
+        ctx.font = "500 " + L.font + "px Archivo, system-ui, sans-serif";
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
         ctx.fillText("Clasificación manual", 12, H - 16);
