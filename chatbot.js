@@ -151,6 +151,13 @@
       next: ["¿Qué tan preciso es?", "¿Qué es el piloto?"]
     },
     {
+      id: "modelo",
+      keys: ["teachable", "teachable machine", "modelo real", "probar el modelo", "probar modelo", "mi camara", "con la camara", "subir foto", "subir una foto", "foto", "probarlo yo", "puedo probar"],
+      answer: "Sí. En la sección <strong>Prueba nuestro modelo</strong> puedes usar la cámara de tu celular o computador, o subir una foto, y el modelo que entrenamos en Teachable Machine te dice si ve <strong>plástico PET, metal o papel y cartón</strong>. La imagen se procesa en tu dispositivo y no se envía a ningún servidor.",
+      actions: [{ label: "Probar el modelo", href: "#modelo", primary: true }],
+      next: ["¿Qué materiales clasifican?", "¿Cómo funciona?"]
+    },
+    {
       id: "beneficios",
       keys: ["beneficio", "beneficios", "ventaja", "ventajas", "por que", "para que sirve", "ahorro", "rentabilidad", "rentable", "ganancia", "vale la pena", "mano de obra", "operarios", "trabajadores"],
       answer: "Los principales beneficios son <strong>menos error humano</strong> en la cinta, <strong>fardos más limpios</strong> (que se venden mejor y se rechazan menos) y <strong>datos por turno</strong> para gestionar la planta. El equipo deja de depender solo del ojo humano frente a una cinta que no se detiene.",

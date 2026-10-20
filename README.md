@@ -16,6 +16,8 @@ ecovision-ai/
 ├── styles.css        Sistema de diseño, componentes y responsive
 ├── script.js         Animaciones, flip cards, demo en vivo y formulario
 ├── chatbot.js        Asistente de preguntas frecuentes (sin servidor)
+├── modelo.js         Prueba del modelo de Teachable Machine con cámara o foto
+├── model/            Archivos del modelo (model.json, model.weights.bin, metadata.json)
 ├── README.md
 └── images/
     ├── logo.svg          Logo principal (navbar, footer, favicon)
@@ -57,6 +59,16 @@ El botón **¿Dudas?** (abajo a la derecha) abre un asistente que responde pregu
 - **Si no sabe:** lo dice y ofrece el correo y el Instagram.
 - **Editar o agregar respuestas:** abre `chatbot.js` y modifica el arreglo `INTENTS`. Cada tema tiene `keys` (palabras clave; agrega `~1` a las genéricas), `answer` (la respuesta), `actions` (botones a secciones o enlaces) y `next` (preguntas sugeridas).
 - **Pasar a IA más adelante:** se puede reemplazar la función `findAnswer` por una llamada a un modelo de IA a través de un servidor intermedio (por ejemplo Cloudflare Workers) que guarde la clave de API. Nunca pongas una clave de API directamente en estos archivos, porque quedaría pública.
+
+## Modelo real (Teachable Machine)
+
+La sección **Prueba nuestro modelo con tu cámara** usa el modelo de imagen entrenado en Teachable Machine (https://teachablemachine.withgoogle.com/models/WM3F4zqXx/), con tres clases: Plástico PET, Metal/ Aluminio y Papel y cartón.
+
+- **Cómo se usa:** el visitante activa la cámara (en el celular abre la trasera; hay un botón para cambiarla) o sube una foto. El modelo muestra en vivo el material más probable y el porcentaje de cada clase. Bajo 60 % de confianza indica "No estoy seguro".
+- **Privacidad:** todo se procesa en el navegador con TensorFlow.js. Ninguna imagen sale del dispositivo, y la cámara se apaga sola al cambiar de pestaña.
+- **Velocidad:** las librerías (TensorFlow.js 1.3.1 y @teachablemachine/image 0.8.5, desde jsDelivr) y el modelo (~2 MB) se descargan solo cuando alguien usa la sección, así que no hacen más lenta la página.
+- **Archivos:** el modelo está copiado en la carpeta `model/` para que cargue rápido y no dependa del enlace de Teachable Machine.
+- **Actualizar el modelo:** si lo reentrenan, en Teachable Machine elijan "Exportar modelo", luego "Tensorflow.js" y "Descargar", y reemplacen los tres archivos de `model/` por los nuevos. Las etiquetas y barras se actualizan solas a partir de `metadata.json`. Si cambian los nombres de las clases, los colores se asignan por palabra clave (PET/plástico en azul, metal/aluminio/acero en gris, papel/cartón en kraft) en la función `classColor` de `modelo.js`.
 
 ## Paleta de colores
 

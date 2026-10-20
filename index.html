@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
 
-  <link rel="stylesheet" href="styles.css?v=20261020b">
+  <link rel="stylesheet" href="styles.css?v=20261020c">
 </head>
 <body>
 
@@ -31,6 +31,7 @@
       <li><a class="nav-link" href="#solucion">Solución</a></li>
       <li><a class="nav-link" href="#como-funciona">Cómo funciona</a></li>
       <li><a class="nav-link" href="#demo">Demo</a></li>
+      <li><a class="nav-link" href="#modelo">Probar modelo</a></li>
       <li><a class="nav-link" href="#integraciones">Integraciones</a></li>
       <li><a class="nav-link" href="#planes">Planes</a></li>
       <li><a class="nav-link" href="#nosotros">Nosotros</a></li>
@@ -271,7 +272,7 @@
   <div class="container">
     <header class="section-head">
       <h2 id="demo-title">Así ve EcoVision AI tu cinta</h2>
-      <p class="section-lead">Cambia entre clasificación manual y EcoVision AI y compara la pureza de los fardos.</p>
+      <p class="section-lead">Cambia entre clasificación manual y EcoVision AI y compara la pureza de los fardos. ¿Quieres probar el modelo real? <a class="inline-link" href="#modelo">Pruébalo con tu cámara</a>.</p>
     </header>
 
     <div class="demo-grid">
@@ -310,6 +311,51 @@
           <div><p class="kpi-small-value" id="kpi-rate">0</p><p class="kpi-small-label">objetos / min</p></div>
           <div><p class="kpi-small-value" id="kpi-errors">0</p><p class="kpi-small-label">mal clasificados</p></div>
         </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODELO REAL · TEACHABLE MACHINE ============ -->
+<section class="section section-alt" id="modelo" aria-labelledby="modelo-title">
+  <div class="container">
+    <header class="section-head">
+      <h2 id="modelo-title">Prueba nuestro modelo con tu cámara</h2>
+      <p class="section-lead">Este es el modelo de clasificación que entrenamos para la primera versión. Muéstrale una botella de plástico, una lata o un papel o cartón y mira qué material reconoce.</p>
+    </header>
+
+    <div class="tm-grid">
+      <!-- Visor: cámara o foto subida -->
+      <div class="tm-stage">
+        <div class="tm-view det" id="tm-view">
+          <video id="tm-video" playsinline muted hidden></video>
+          <img id="tm-photo" alt="Foto subida para clasificar" hidden>
+          <div class="tm-empty" id="tm-empty">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><path d="M6 16a4 4 0 0 1 4-4h5l3-4h12l3 4h5a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="24" cy="25" r="7.5" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+            <p>Activa la cámara o sube una foto para empezar.</p>
+          </div>
+          <span class="tm-tag" id="tm-tag" hidden></span>
+        </div>
+        <div class="tm-controls">
+          <button type="button" class="btn btn-primary" id="tm-camera">Usar cámara</button>
+          <label class="btn btn-outline tm-upload" for="tm-file">Subir foto</label>
+          <input type="file" id="tm-file" accept="image/*" class="tm-file">
+          <button type="button" class="btn btn-outline" id="tm-flip" hidden>Cambiar cámara</button>
+          <button type="button" class="btn btn-outline" id="tm-stop" hidden>Detener</button>
+        </div>
+        <p class="tm-status" id="tm-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- Resultados -->
+      <aside class="tm-panel glass-card" aria-labelledby="tm-result-title">
+        <p class="panel-caption" id="tm-result-title">Lo que ve el modelo</p>
+        <p class="tm-top" id="tm-top">Esperando imagen</p>
+        <ul class="tm-bars" id="tm-bars" aria-label="Probabilidad por material"></ul>
+        <ul class="tm-notes">
+          <li>La imagen se procesa en tu dispositivo y no se envía a ningún servidor.</li>
+          <li>Es un prototipo entrenado en Teachable Machine con tres clases: plástico PET, metal y papel o cartón. Con objetos de otro tipo, igual elegirá la clase más parecida.</li>
+          <li>Funciona mejor con un solo objeto, centrado y con buena luz.</li>
+        </ul>
       </aside>
     </div>
   </div>
@@ -634,8 +680,10 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261020b"></script>
+<script src="script.js?v=20261020c"></script>
 <!-- Asistente de preguntas frecuentes (sin servidor) -->
-<script src="chatbot.js?v=20261020b"></script>
+<script src="chatbot.js?v=20261020c"></script>
+<!-- Modelo real de Teachable Machine (carga sus librerías solo al usarse) -->
+<script src="modelo.js?v=20261020c"></script>
 </body>
 </html>

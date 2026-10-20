@@ -79,7 +79,7 @@
     if (e.key === "Escape" && links.classList.contains("open")) { closeMenu(); toggle.focus(); }
   });
   window.addEventListener("resize", debounce(function () {
-    if (window.innerWidth >= 1024) closeMenu();
+    if (window.innerWidth >= 1200) closeMenu();
   }, 150));
 
   // Link activo según la sección visible
