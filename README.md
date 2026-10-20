@@ -36,15 +36,15 @@ Las imágenes son vectoriales (SVG): pesan pocos KB, se ven nítidas en cualquie
 ## Secciones
 
 1. **Navbar** fija con desenfoque al hacer scroll y menú hamburguesa en tablet y móvil.
-2. **Hero** con el tagline, la propuesta de valor, dos CTA, 50 partículas y el visual flotante.
-3. **Tecnología y métricas** con contadores animados (marcadas como metas del piloto).
+2. **Hero** con el tagline, la propuesta de valor, dos CTA y el visor de cámara que enfoca y muestra las detecciones.
+3. **Tecnología y métricas** (marcadas como metas del piloto).
 4. **Solución**: 6 flip cards con imagen. Giran con hover en escritorio y con un toque en móvil o con Enter en teclado.
 5. **Cómo funciona**: los 4 pasos, de la captura a la medición.
 6. **Demo en vivo**: simulación en canvas de una cinta con detección y separación. Permite cambiar entre EcoVision AI y clasificación manual y comparar la pureza.
-7. **Integraciones y API** con un ejemplo de evento JSON y botón para copiar.
-8. **Planes**: Piloto, Planta y Red.
-9. **Roadmap** en 4 fases.
-10. **Testimonios** (textos de ejemplo, ver abajo).
+7. **Prueba del modelo**: el modelo de Teachable Machine con cámara o foto.
+8. **Integraciones y API** con un ejemplo de evento JSON y botón para copiar.
+9. **Planes**: Piloto, Planta y Red.
+10. **Roadmap** en 4 fases.
 11. **Nosotros**: origen en Concepción y la Universidad del Desarrollo.
 12. **Ubicación**: mapa interactivo de Google Maps incrustado en la página (UDD sede Ainavillo, Ainavillo 456, Concepción), con botones Edificio / Barrio / Ciudad para cambiar el acercamiento sin salir de la web.
 13. **CTA final** con formulario de postulación al piloto.
@@ -106,7 +106,6 @@ También respeta `prefers-reduced-motion`: si el usuario pidió menos movimiento
 
 ## Antes de publicar
 
-- **Testimonios:** los tres textos son de ejemplo y lo dicen en la página. Reemplázalos por testimonios reales de los pilotos (en `index.html`, sección `#testimonios`) y borra el aviso amarillo.
 - **Métricas:** las cifras (4 materiales, <80 ms, 95 % de pureza) están marcadas como metas de diseño del piloto. Actualízalas cuando tengas resultados medidos.
 - **Formulario:** no tiene servidor. Al postular, arma un correo con los datos dirigido a ecovisionai1@gmail.com para que el visitante lo envíe desde su propio correo. Para recibir las postulaciones automáticamente, conéctalo a un servicio como Formspree, Getform o Netlify Forms y reemplaza el bloque `submit` de `script.js` por el envío real.
 - **Redes sociales:** Instagram (@ecovisionai1) y el correo ecovisionai1@gmail.com ya están enlazados en Contacto, Nosotros y el footer. LinkedIn y YouTube siguen apuntando a `#`: cambia el `href` por las URLs reales o borra esos enlaces.

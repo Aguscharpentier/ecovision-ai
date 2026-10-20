@@ -428,31 +428,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background: linear-gradient(90deg, var(--green) 0 25%, var(--line-strong) 25% 100%);
 }
 .road-item { position: relative; display: grid; gap: 10px; align-content: start; }
-.road-item::before { content: ""; position: absolute; top: -35px; left: 0; width: 12px; height: 12px; background: var(--surface); border: 2px solid var(--line-strong); }
+.road-item::before { content: ""; position: absolute; top: -35px; left: 0; width: 12px; height: 12px; background: var(--black); border: 2px solid var(--line-strong); }
 .road-item:first-child::before { background: var(--green); border-color: var(--green); }
 .road-status { justify-self: start; font-size: 0.85rem; font-weight: 600; color: var(--text-3); }
 .road-status.is-now { color: var(--green-soft); }
 .road-phase { display: block; font-size: 0.9rem; font-weight: 500; font-stretch: 100%; color: var(--text-3); margin-bottom: 4px; letter-spacing: 0; }
 .road-item h3 { font-size: 1.3rem; }
 .road-item p { color: var(--text-3); font-size: 0.98rem; line-height: 1.6; }
-
-/* =========================================================
-   TESTIMONIOS
-   ========================================================= */
-.placeholder-note {
-  justify-self: start; font-size: 0.88rem; color: var(--warning);
-  border: 1px dashed rgba(245, 158, 11, 0.45); padding: 6px 12px; border-radius: 6px;
-}
-.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.testi-card { margin: 0; display: flex; flex-direction: column; gap: 18px; }
-.stars { color: var(--green); letter-spacing: 2px; font-size: 0.95rem; }
-.testi-card blockquote { margin: 0; color: var(--text); font-size: 1.12rem; line-height: 1.55; flex: 1; font-weight: 450; }
-.testi-card figcaption { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; color: var(--text-3); line-height: 1.4; padding-top: 18px; border-top: 1px solid var(--line); }
-.testi-card figcaption strong { color: var(--text-2); font-weight: 600; }
-.avatar {
-  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex: none;
-  font-weight: 700; font-size: 0.9rem; color: var(--text); background: var(--panel-2); border: 1px solid var(--line-strong);
-}
 
 /* =========================================================
    NOSOTROS
@@ -627,8 +609,6 @@ a.about-place:hover { color: var(--green-soft); }
   .price-card { padding: 24px; }
   .price { font-size: 1.8rem; }
   .badge { position: static; order: -1; }
-  .testi-grid { grid-template-columns: repeat(2, 1fr); }
-  .testi-grid > :last-child { grid-column: 1 / -1; }
   .roadmap { grid-template-columns: repeat(2, 1fr); row-gap: 56px; }
   .roadmap::before { background: linear-gradient(90deg, var(--green) 0 50%, var(--line-strong) 50% 100%); }
   .road-item:nth-child(n+3)::before { display: none; }
@@ -664,7 +644,7 @@ a.about-place:hover { color: var(--green-soft); }
   .kpi-big-value { font-size: 3rem; }
 
   .int-list { grid-template-columns: 1fr; }
-  .pricing-grid, .testi-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
   .badge { top: 26px; right: 24px; }
   .roadmap { grid-template-columns: 1fr; gap: 32px; padding: 0 0 0 28px; }
   .roadmap::before { left: 5px; right: auto; top: 6px; bottom: 6px; width: 2px; height: auto; background: linear-gradient(180deg, var(--green) 0 22%, var(--line-strong) 22% 100%); }
