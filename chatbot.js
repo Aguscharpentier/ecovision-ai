@@ -131,7 +131,7 @@
     },
     {
       id: "quienes",
-      keys: ["quienes son", "quienes~1", "fundador", "universidad", "udd", "universidad del desarrollo", "estudiante", "historia", "origen", "empresa~1", "startup", "nosotros"],
+      keys: ["quienes son", "quienes~1", "quien esta detras", "quien lo hizo", "el equipo", "su equipo", "equipo de trabajo", "integrantes", "fundador", "universidad", "udd", "universidad del desarrollo", "estudiante", "historia", "origen", "empresa~1", "startup", "nosotros"],
       answer: "EcoVision AI nace en <strong>Concepción, en la Universidad del Desarrollo</strong>. Combinamos visión artificial, automatización industrial y conocimiento de la operación de las plantas, con una meta: que las plantas de Chile y Latinoamérica reciclen más, con menos error y mejores márgenes.",
       actions: [{ label: "Sobre nosotros", href: "#nosotros" }],
       next: ["¿Dónde están?", "¿Cómo los contacto?"]

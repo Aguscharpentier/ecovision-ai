@@ -201,8 +201,12 @@
     photo.onload = function () {
       empty.hidden = true;
       photo.hidden = false;
-      ensureModel().then(function () {
-        return model.predict(photo);
+      // Se clasifica una copia a tamaño original: el <img> de la página mide lo
+      // que ocupa en pantalla (4:3) y el modelo vería la foto deformada.
+      var original = new Image();
+      original.src = url;
+      Promise.all([ensureModel(), original.decode()]).then(function () {
+        return model.predict(original);
       }).then(function (preds) {
         showPrediction(preds);
         setStatus("Listo. Sube otra foto o activa la cámara para seguir probando.");
