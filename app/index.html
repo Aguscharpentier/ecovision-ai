@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EcoVision AI</title>
+  <meta name="description" content="Clasifica residuos con la cámara del celular: plástico PET, metal y papel o cartón. Funciona sin internet y sin enviar imágenes a ningún servidor.">
+  <meta name="theme-color" content="#050706">
+
+  <!-- PWA: se instala en la pantalla de inicio y funciona sin conexión -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="../images/logo.svg">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="EcoVision">
+
+  <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="app.css?v=20261103">
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============ BARRA SUPERIOR ============ -->
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="Ir a la web de EcoVision AI">
+      <img src="../images/logo.svg" alt="" width="34" height="34">
+      <span class="brand-name">EcoVision<span class="brand-ai">AI</span></span>
+    </a>
+    <span class="net-chip" id="net-chip" hidden>Sin conexión</span>
+    <button type="button" class="btn btn-primary btn-sm" id="install-btn" hidden>Instalar</button>
+  </header>
+
+  <!-- Aviso para instalar en iPhone (Safari no tiene botón de instalar) -->
+  <div class="notice" id="ios-hint" hidden>
+    <p>Para instalarla en tu iPhone, toca <strong>Compartir</strong> y luego <strong>Agregar a inicio</strong>.</p>
+    <button type="button" class="notice-close" id="ios-hint-close" aria-label="Cerrar aviso">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <main class="views">
+
+    <!-- ============ VISTA: CLASIFICAR ============ -->
+    <section class="view" id="view-scan" aria-labelledby="scan-title">
+      <h1 class="sr-only" id="scan-title">Clasificar</h1>
+
+      <div class="viewer det" id="viewer">
+        <video id="video" playsinline muted hidden></video>
+        <img id="photo" alt="Foto elegida para clasificar" hidden>
+        <div class="viewer-empty" id="viewer-empty">
+          <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true"><path d="M6 16a4 4 0 0 1 4-4h5l3-4h12l3 4h5a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="24" cy="25" r="7.5" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+          <p>Apunta a un solo objeto, centrado y con buena luz.</p>
+        </div>
+        <span class="viewer-tag" id="viewer-tag" hidden></span>
+        <button type="button" class="viewer-close" id="stop-btn" aria-label="Detener cámara" hidden>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="controls">
+        <label class="ctrl" for="file-input">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M4 17l5-5 4 4 2.5-2.5L20 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span>Foto</span>
+        </label>
+        <input type="file" id="file-input" accept="image/*" class="file-input">
+
+        <button type="button" class="shutter" id="main-btn">
+          <span class="shutter-ring" aria-hidden="true"></span>
+          <span class="shutter-label" id="main-label">Activar cámara</span>
+        </button>
+
+        <button type="button" class="ctrl" id="flip-btn" disabled>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9a8 8 0 0 1 14.3-3.2M20 15a8 8 0 0 1-14.3 3.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.5 2.5v3.6h-3.6M5.5 21.5v-3.6h3.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Girar</span>
+        </button>
+      </div>
+
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+
+      <section class="result" aria-labelledby="result-caption">
+        <p class="caption" id="result-caption">Lo que ve el modelo</p>
+        <p class="result-top" id="result-top">Esperando imagen</p>
+        <ul class="bars" id="bars" aria-label="Probabilidad por material"></ul>
+      </section>
+
+      <ul class="notes">
+        <li>La imagen se procesa en tu celular y no se envía a ningún servidor.</li>
+        <li>El modelo ve lo que está dentro del cuadro. Distingue tres clases: plástico PET, metal y papel o cartón. Con otros objetos igual elegirá la más parecida.</li>
+      </ul>
+    </section>
+
+    <!-- ============ VISTA: HISTORIAL ============ -->
+    <section class="view" id="view-history" aria-labelledby="history-title" hidden>
+      <div class="view-head">
+        <h1 id="history-title">Historial</h1>
+        <button type="button" class="btn btn-outline btn-sm" id="clear-btn" hidden>Borrar</button>
+      </div>
+      <p class="lead">Lo que registraste con la cámara o con fotos. Queda guardado solo en este celular.</p>
+
+      <dl class="summary" id="summary"></dl>
+
+      <ol class="history" id="history"></ol>
+      <p class="history-empty" id="history-empty">Todavía no registras nada. En Clasificar, apunta a un objeto y toca <strong>Registrar</strong>.</p>
+    </section>
+
+    <!-- ============ VISTA: ACERCA ============ -->
+    <section class="view" id="view-about" aria-labelledby="about-title" hidden>
+      <h1 id="about-title">Acerca de la app</h1>
+      <div class="about">
+        <p>Esta app usa el modelo de clasificación que EcoVision AI entrenó en Teachable Machine para su primera versión. Reconoce plástico PET, metal y papel o cartón.</p>
+        <p>Es un prototipo para mostrar cómo funciona la visión artificial. El sistema para plantas de reciclaje trabaja sobre la cinta transportadora, con cámaras industriales y separación automática.</p>
+        <h2>Privacidad</h2>
+        <p>Las imágenes se procesan en tu celular. No se envían a ningún servidor y el historial queda guardado solo en este dispositivo.</p>
+        <h2>Sin internet</h2>
+        <p>Después de abrirla una vez con conexión, la app y el modelo quedan guardados y funcionan sin internet.</p>
+        <h2>Contacto</h2>
+        <ul class="links">
+          <li><a href="mailto:ecovisionai1@gmail.com">ecovisionai1@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/ecovisionai1/" target="_blank" rel="noopener">@ecovisionai1 en Instagram</a></li>
+          <li><a href="../">Web de EcoVision AI</a></li>
+        </ul>
+        <p class="version">Versión <span id="app-version"></span></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ NAVEGACIÓN INFERIOR ============ -->
+  <nav class="tabbar" aria-label="Secciones de la app">
+    <button type="button" class="tab is-active" data-view="view-scan" aria-current="page">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.9"/></svg>
+      <span>Clasificar</span>
+    </button>
+    <button type="button" class="tab" data-view="view-history">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+      <span>Historial</span>
+      <span class="tab-count" id="tab-count" hidden></span>
+    </button>
+    <button type="button" class="tab" data-view="view-about">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M12 11v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="8" r="1.1" fill="currentColor"/></svg>
+      <span>Acerca</span>
+    </button>
+  </nav>
+
+  <!-- Aviso de versión nueva -->
+  <div class="toast" id="update-toast" role="status" hidden>
+    <p>Hay una versión nueva de la app.</p>
+    <button type="button" class="btn btn-primary btn-sm" id="update-btn">Actualizar</button>
+  </div>
+</div>
+
+<!-- Modelo: TensorFlow.js y Teachable Machine alojados en la app para que funcione sin internet -->
+<script src="vendor/tf-1.3.1.min.js" defer></script>
+<script src="vendor/teachablemachine-image-0.8.5.min.js" defer></script>
+<script src="app.js?v=20261103" defer></script>
+</body>
+</html>

@@ -18,6 +18,7 @@ ecovision-ai/
 ├── chatbot.js        Asistente de preguntas frecuentes (sin servidor)
 ├── modelo.js         Prueba del modelo de Teachable Machine con cámara o foto
 ├── model/            Archivos del modelo (model.json, model.weights.bin, metadata.json)
+├── app/              App para celular (PWA), ver "App para celular" más abajo
 ├── README.md
 └── images/
     ├── logo.svg          Logo principal (navbar, footer, favicon)
@@ -68,7 +69,49 @@ La sección **Prueba nuestro modelo con tu cámara** usa el modelo de imagen ent
 - **Privacidad:** todo se procesa en el navegador con TensorFlow.js. Ninguna imagen sale del dispositivo, y la cámara se apaga sola al cambiar de pestaña.
 - **Velocidad:** las librerías (TensorFlow.js 1.3.1 y @teachablemachine/image 0.8.5, desde jsDelivr) y el modelo (~2 MB) se descargan solo cuando alguien usa la sección, así que no hacen más lenta la página.
 - **Archivos:** el modelo está copiado en la carpeta `model/` para que cargue rápido y no dependa del enlace de Teachable Machine.
-- **Actualizar el modelo:** si lo reentrenan, en Teachable Machine elijan "Exportar modelo", luego "Tensorflow.js" y "Descargar", y reemplacen los tres archivos de `model/` por los nuevos. Las etiquetas y barras se actualizan solas a partir de `metadata.json`. Si cambian los nombres de las clases, los colores se asignan por palabra clave (PET/plástico en azul, metal/aluminio/acero en gris, papel/cartón en kraft) en la función `classColor` de `modelo.js`.
+- **Actualizar el modelo:** si lo reentrenan, en Teachable Machine elijan "Exportar modelo", luego "Tensorflow.js" y "Descargar", y reemplacen los tres archivos de `model/` por los nuevos. La app para celular usa estos mismos archivos: cambien también `VERSION` en `app/sw.js` (ver más abajo) para que los celulares descarguen el modelo nuevo. Las etiquetas y barras se actualizan solas a partir de `metadata.json`. Si cambian los nombres de las clases, los colores se asignan por palabra clave (PET/plástico en azul, metal/aluminio/acero en gris, papel/cartón en kraft) en la función `classColor` de `modelo.js`.
+
+## App para celular (PWA)
+
+La carpeta `app/` es una app instalable que se publica junto a la web, en `https://aguscharpentier.github.io/ecovision-ai/app/`. Usa el mismo modelo de `model/`.
+
+- **Qué hace:** clasifica con la cámara (trasera por defecto, con botón para girar) o con una foto. El visor es cuadrado porque el modelo analiza el cuadrado central de la imagen: lo que se ve es lo que ve el modelo. El botón **Registrar** guarda el resultado con una miniatura en el **Historial**, que muestra un resumen por material. El historial queda solo en ese celular (hasta 60 registros).
+- **Sin internet:** al abrirla por primera vez, el *service worker* (`app/sw.js`) guarda la app, las librerías, la fuente y el modelo (unos 3,5 MB). Desde ahí funciona sin conexión. La app no carga nada de otros dominios: TensorFlow.js, Teachable Machine y la fuente Archivo están copiados en `app/vendor/` y `app/fonts/`.
+- **Cómo se instala:**
+  - Android (Chrome): aparece el botón **Instalar** arriba a la derecha, o en el menú del navegador "Instalar app".
+  - iPhone (Safari): Compartir y luego **Agregar a inicio**. La app muestra este aviso la primera vez.
+- **Privacidad:** igual que en la web, las imágenes se procesan en el celular y no se envían a ningún servidor.
+
+### Publicar cambios en la app
+
+Los celulares guardan la app, así que una versión nueva solo les llega si cambia `VERSION` en `app/sw.js`:
+
+1. Edita lo que necesites (`app/index.html`, `app/app.css`, `app/app.js` o los archivos de `model/`).
+2. Cambia `VERSION` en `app/sw.js` a la fecha del día (por ejemplo `"20261115"`).
+3. En `app/index.html`, usa el mismo valor en los `?v=` de `app.css` y `app.js`.
+4. Publica. Quien tenga la app abierta verá el aviso **Hay una versión nueva** con el botón **Actualizar**.
+
+Si agregas un archivo nuevo que la app necesite sin internet, súmalo a la lista `PRECACHE` de `app/sw.js`.
+
+### Archivos de la app
+
+```
+app/
+├── index.html              Pantallas: Clasificar, Historial y Acerca
+├── app.css                 Estilos (mismos colores y tipografía que la web)
+├── app.js                  Cámara, foto, modelo, historial e instalación
+├── sw.js                   Service worker: funcionamiento sin internet y actualizaciones
+├── manifest.webmanifest    Nombre, colores e íconos para instalarla
+├── icons/                  Íconos PNG (192, 512, maskable para Android, 180 para iPhone)
+├── fonts/archivo-latin.woff2
+└── vendor/                 TensorFlow.js 1.3.1 y @teachablemachine/image 0.8.5 (licencia Apache 2.0)
+```
+
+Los íconos se generaron a partir de `images/logo.svg`. Si cambia el logo, hay que volver a exportarlos en los mismos tamaños.
+
+### Siguiente paso posible
+
+Para publicarla en Google Play o App Store se puede empaquetar esta misma app con Capacitor (o, solo para Android, con una Trusted Web Activity). No hace falta reescribirla.
 
 ## Paleta de colores
 
@@ -130,4 +173,5 @@ También respeta `prefers-reduced-motion`: si el usuario pidió menos movimiento
 ## Créditos
 
 Diseño y desarrollo para EcoVision AI · Concepción, Región del Biobío, Chile.
-Fuentes: Google Fonts (licencia SIL Open Font License).
+Fuentes: Archivo y JetBrains Mono, de Google Fonts (licencia SIL Open Font License).
+Librerías de la app: TensorFlow.js y @teachablemachine/image (licencia Apache 2.0).
