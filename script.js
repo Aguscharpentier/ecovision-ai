@@ -1,11 +1,11 @@
 /* =========================================================
    EcoVision AI · Interacciones
    1. Navbar sticky + menú móvil + link activo
-   2. Partículas del hero + parallax suave
-   3. Flip cards (hover en escritorio, tap/teclado en móvil)
-   4. Reveal al hacer scroll + contadores animados
-   5. Demo en vivo: simulación de cinta con visión artificial
-   6. Copiar código, formulario y año del footer
+   2. Flip cards (hover en escritorio, tap/teclado en móvil)
+   3. Demo en vivo: simulación de cinta con visión artificial
+   4. Copiar código, formulario, mapa y año del footer
+   La única animación de entrada es la del visor del hero (CSS):
+   sin partículas, sin parallax, sin reveal ni contadores.
    ========================================================= */
 (function () {
   "use strict";
@@ -23,35 +23,17 @@
     };
   }
 
-  function animateCounter(element, target, duration) {
-    duration = duration || 2000;
-    var start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      element.textContent = Math.round(target * eased);
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
   /* =========================================================
      1. NAVBAR
      ========================================================= */
   var navbar = document.getElementById("navbar");
   var toggle = document.getElementById("menu-toggle");
   var links = document.getElementById("nav-links");
-  var heroGlow = null; // sin parallax: la portada queda quieta al hacer scroll
   var ticking = false;
 
   function onScroll() {
     var y = window.scrollY || window.pageYOffset;
     navbar.classList.toggle("scrolled", y > 24);
-    // Parallax suave del brillo de fondo (0.3x)
-    if (heroGlow && !reduceMotion && y < 1200) {
-      heroGlow.style.transform = "translateY(" + (y * 0.3) + "px)";
-    }
     ticking = false;
   }
   window.addEventListener("scroll", function () {
@@ -100,27 +82,7 @@
   }
 
   /* =========================================================
-     2. PARTÍCULAS (50)
-     ========================================================= */
-  var particlesContainer = document.getElementById("particles");
-  if (particlesContainer && !reduceMotion) {
-    var frag = document.createDocumentFragment();
-    for (var i = 0; i < 50; i++) {
-      var particle = document.createElement("div");
-      particle.className = "particle";
-      particle.style.left = Math.random() * 100 + "%";
-      particle.style.top = Math.random() * 100 + "%";
-      particle.style.animationDelay = -(Math.random() * 20) + "s";
-      particle.style.animationDuration = (15 + Math.random() * 10) + "s";
-      var size = 2 + Math.random() * 2.5;
-      particle.style.width = particle.style.height = size + "px";
-      frag.appendChild(particle);
-    }
-    particlesContainer.appendChild(frag);
-  }
-
-  /* =========================================================
-     3. FLIP CARDS
+     2. FLIP CARDS
      ========================================================= */
   document.querySelectorAll(".service-card-flip").forEach(function (card) {
     card.addEventListener("click", function () {
@@ -135,59 +97,20 @@
   });
 
   /* =========================================================
-     4. REVEAL + CONTADORES
-     ========================================================= */
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    document.documentElement.classList.add("js-reveal");
-    var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
-    var vh = window.innerHeight;
-
-    // Lo que ya está en pantalla al cargar se muestra de inmediato
-    revealEls.forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < vh && r.bottom > 0) el.classList.add("in");
-    });
-
-    var revealObserver = new IntersectionObserver(function (entries) {
-      // Agrupa por contenedor para aplicar stagger de 0.1s
-      var batch = entries.filter(function (e) { return e.isIntersecting; });
-      batch.forEach(function (entry, index) {
-        var el = entry.target;
-        setTimeout(function () { el.classList.add("in"); }, index * 100);
-        revealObserver.unobserve(el);
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
-
-    revealEls.forEach(function (el) { if (!el.classList.contains("in")) revealObserver.observe(el); });
-  }
-
-  var counters = document.querySelectorAll(".counter");
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    var counterObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target, parseInt(entry.target.dataset.target, 10), 1800);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (c) { counterObserver.observe(c); });
-  }
-
-  /* =========================================================
-     5. DEMO EN VIVO · Simulación de la cinta
+     3. DEMO EN VIVO · Simulación de la cinta
      ========================================================= */
   var canvas = document.getElementById("belt-canvas");
   if (canvas && canvas.getContext) {
     var ctx = canvas.getContext("2d");
     var W = 0, H = 0, dpr = 1;
 
+    // Mismos colores que --mat-* en styles.css
     var MATS = {
-      pet:    { label: "PET",    color: "#38BDF8" },
-      acero:  { label: "ACERO",  color: "#A1A1AA" },
-      papel:  { label: "PAPEL",  color: "#F4F4F5" },
-      carton: { label: "CARTÓN", color: "#C89463" },
-      otros:  { label: "OTROS",  color: "#52525B" }
+      pet:    { label: "PET",    color: "#4FB3F6" },
+      acero:  { label: "Acero",  color: "#A9B2B8" },
+      papel:  { label: "Papel",  color: "#ECE9E0" },
+      carton: { label: "Cartón", color: "#C4925B" },
+      otros:  { label: "Otros",  color: "#5B625E" }
     };
     var BIN_ORDER = ["pet", "acero", "papel", "carton"];
     var BIN_X = { pet: 0.44, acero: 0.59, papel: 0.74, carton: 0.89 };
@@ -334,26 +257,26 @@
       ctx.rotate(it.rot);
       switch (it.type) {
         case "pet":
-          ctx.fillStyle = "rgba(56,189,248,0.35)";
-          ctx.strokeStyle = "#7DD3FC"; ctx.lineWidth = 1.5;
+          ctx.fillStyle = "rgba(79,179,246,0.35)";
+          ctx.strokeStyle = "#4FB3F6"; ctx.lineWidth = 1.5;
           roundRect(-s * 0.22, -s * 0.42, s * 0.44, s * 0.84, s * 0.14); ctx.fill(); ctx.stroke();
-          ctx.fillStyle = "#22C55E";
+          ctx.fillStyle = "#2B7FBF";
           roundRect(-s * 0.1, -s * 0.54, s * 0.2, s * 0.14, 2); ctx.fill();
           ctx.strokeStyle = "rgba(255,255,255,0.45)"; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.moveTo(-s * 0.1, -s * 0.25); ctx.lineTo(-s * 0.1, s * 0.3); ctx.stroke();
           break;
         case "acero":
           var g = ctx.createLinearGradient(-s * 0.3, 0, s * 0.3, 0);
-          g.addColorStop(0, "#52525B"); g.addColorStop(0.3, "#E4E4E7"); g.addColorStop(1, "#3F3F46");
+          g.addColorStop(0, "#5F676C"); g.addColorStop(0.3, "#D7DDE0"); g.addColorStop(1, "#495054");
           ctx.fillStyle = g;
           ctx.fillRect(-s * 0.3, -s * 0.36, s * 0.6, s * 0.72);
-          ctx.fillStyle = "#D4D4D8";
+          ctx.fillStyle = "#A9B2B8";
           ctx.beginPath(); ctx.ellipse(0, -s * 0.36, s * 0.3, s * 0.1, 0, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = "#52525B";
           ctx.beginPath(); ctx.ellipse(0, s * 0.36, s * 0.3, s * 0.1, 0, 0, Math.PI); ctx.fill();
           break;
         case "papel":
-          ctx.fillStyle = "#F4F4F5";
+          ctx.fillStyle = "#ECE9E0";
           ctx.fillRect(-s * 0.36, -s * 0.44, s * 0.72, s * 0.88);
           ctx.strokeStyle = "#A1A1AA"; ctx.lineWidth = 1.5;
           for (var k = 0; k < 4; k++) {
@@ -361,9 +284,9 @@
           }
           break;
         case "carton":
-          ctx.fillStyle = "#A0703F";
+          ctx.fillStyle = "#9C7041";
           ctx.fillRect(-s * 0.45, -s * 0.38, s * 0.9, s * 0.76);
-          ctx.fillStyle = "#C89463";
+          ctx.fillStyle = "#C4925B";
           ctx.fillRect(-s * 0.45, -s * 0.38, s * 0.9, s * 0.2);
           ctx.fillStyle = "rgba(90,58,30,0.8)";
           ctx.fillRect(-s * 0.06, -s * 0.38, s * 0.12, s * 0.76);
@@ -496,7 +419,7 @@
       });
       // Rechazo
       ctx.textAlign = "right"; ctx.fillStyle = "#71717A";
-      ctx.fillText("RECHAZO →", W - 10, L.beltTop - L.font);
+      ctx.fillText("Rechazo", W - 10, L.beltTop - L.font);
       ctx.textAlign = "left";
 
       // Objetos
@@ -611,7 +534,7 @@
   }
 
   /* =========================================================
-     6. COPIAR CÓDIGO · FORMULARIO · AÑO
+     4. COPIAR CÓDIGO · FORMULARIO · MAPA · AÑO
      ========================================================= */
   var copyBtn = document.getElementById("copy-code");
   var code = document.getElementById("code-sample");
@@ -662,7 +585,7 @@
         "\nCorreo: " + form.querySelector("#f-email").value.trim() +
         "\nVolumen procesado: " + (form.querySelector("#f-volume").value || "No indicado");
       var mailto = "mailto:ecovisionai1@gmail.com?subject=" +
-        encodeURIComponent("Postulación al piloto · " + form.querySelector("#f-company").value.trim()) +
+        encodeURIComponent("Postulación al piloto: " + form.querySelector("#f-company").value.trim()) +
         "&body=" + encodeURIComponent(body);
       msg.innerHTML = "";
       msg.appendChild(document.createTextNode("Gracias, " + name + ". Para completar tu postulación, "));

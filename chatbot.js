@@ -131,7 +131,7 @@
     },
     {
       id: "quienes",
-      keys: ["quienes son", "quienes~1", "fundador", "universidad", "udd", "universidad del desarrollo", "estudiante", "historia", "origen", "empresa~1", "startup", "nosotros"],
+      keys: ["quienes son", "quienes~1", "quien esta detras", "quien lo hizo", "el equipo", "su equipo", "equipo de trabajo", "integrantes", "fundador", "universidad", "udd", "universidad del desarrollo", "estudiante", "historia", "origen", "empresa~1", "startup", "nosotros"],
       answer: "EcoVision AI nace en <strong>Concepción, en la Universidad del Desarrollo</strong>. Combinamos visión artificial, automatización industrial y conocimiento de la operación de las plantas, con una meta: que las plantas de Chile y Latinoamérica reciclen más, con menos error y mejores márgenes.",
       actions: [{ label: "Sobre nosotros", href: "#nosotros" }],
       next: ["¿Dónde están?", "¿Cómo los contacto?"]
@@ -152,9 +152,9 @@
     },
     {
       id: "modelo",
-      keys: ["teachable", "teachable machine", "modelo real", "probar el modelo", "probar modelo", "mi camara", "con la camara", "subir foto", "subir una foto", "foto", "probarlo yo", "puedo probar"],
-      answer: "Sí. En la sección <strong>Prueba nuestro modelo</strong> puedes usar la cámara de tu celular o computador, o subir una foto, y el modelo que entrenamos en Teachable Machine te dice si ve <strong>plástico PET, metal o papel y cartón</strong>. La imagen se procesa en tu dispositivo y no se envía a ningún servidor.",
-      actions: [{ label: "Probar el modelo", href: "#modelo", primary: true }],
+      keys: ["teachable", "teachable machine", "modelo real", "probar el modelo", "probar modelo", "mi camara", "con la camara", "subir foto", "subir una foto", "foto", "probarlo yo", "puedo probar", "app", "aplicacion", "instalar la app", "descargar la app", "en mi celular", "en el celular", "celular~1", "sin internet en el celular"],
+      answer: "Sí. En la sección <strong>Prueba nuestro modelo</strong> puedes usar la cámara de tu celular o computador, o subir una foto, y el modelo que entrenamos en Teachable Machine te dice si ve <strong>plástico PET, metal o papel y cartón</strong>. La imagen se procesa en tu dispositivo y no se envía a ningún servidor. También está como <strong>app para celular</strong>: se instala desde el navegador, guarda un historial y funciona sin internet.",
+      actions: [{ label: "Probar el modelo", href: "#modelo", primary: true }, { label: "Abrir la app", href: "app/" }],
       next: ["¿Qué materiales clasifican?", "¿Cómo funciona?"]
     },
     {
